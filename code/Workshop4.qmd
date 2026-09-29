@@ -1,0 +1,86 @@
+---
+title: "PalmerPenguins"
+author: "Thrall Hershberger"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+```{r}
+
+```
+
+```{r}
+# Create a ggplot scatter plot using the penguins dataset. 
+# Plot bill_length_mm on the x-axis and bill_depth_mm on the y-axis.
+# Color points by species and use geom_point with size 3.
+# Add a minimal theme and clean labels.
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point(size = 3) +
+  theme_minimal() +
+  labs(title = "Bill Length vs Bill Depth in Penguins",
+       x = "Bill Length (mm)",
+       y = "Bill Depth (mm)",
+       color = "Species")
+```
+
+```{r}
+# Create a ggplot boxplot using the penguins dataset.
+# Compare flipper_length_mm across the different penguin species.
+# Use species on the x-axis and flipper_length_mm on the y-axis.
+# Fill each species boxplot with a different custom colour.
+# Facet the boxplots by island using facet_wrap().
+# Add a minimal theme and clear axis labels.
+# Include a descriptive title and a legend for species.
+```
+
+```{r}
+ggplot(data = penguins, aes(x = species, y = flipper_length_mm, fill = species)) +
+  geom_boxplot() +
+  facet_wrap(~ island) +
+  theme_minimal() +
+  labs(title = "Flipper Length Across Penguin Species by Island",
+       x = "Species",
+       y = "Flipper Length (mm)",
+       fill = "Species") +
+  scale_fill_manual(values = c("Adelie" = "#1f77b4", "Chinstrap" = "#ff7f0e", "Gentoo" = "#2ca02c"))
+```
+
+```         
+```
+
+```{r}
+#install.packages("chattr")
+#install.packages("ellmer")
+library(chattr)
+library(ellmer)
+```
+
+```{r}
+data("iris")
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
